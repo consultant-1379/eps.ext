@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="urn:com:ericsson:schema:xml:oss:fbp_flow"
+	xmlns:oc="urn:com:ericsson:schema:xml:oss:oss_common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	oc:ns="com.test.ext" oc:name="SolrFlow" oc:version="1.1.0">
+
+	<oc:modelCreationInfo author="author"
+		creationDate="today">
+		<oc:designedModel componentId="someComponentId" />
+	</oc:modelCreationInfo>
+
+	<oc:desc>Solr test flow</oc:desc>
+
+	<input name="hcInputCdiDummy">
+		<attribute name="uri" value="hazelcast:/" />
+		<attribute name="channelName" value="eps-topic1" />
+	</input>
+
+	<output name="solrOutput">
+		<handler>
+		<className>com.ericsson.component.aia.services.exteps.ioadapter.solr.SolrOutputAdapter</className>
+		</handler>
+	</output>
+
+	<step name="testPassThroughComponent">
+		<handler>
+			<className>com.ericsson.component.aia.services.exteps.integration.mock.JeeTestPassThroughEventHandler</className>
+		</handler>
+	</step>
+
+	<path>
+		<from uri="hcInputCdiDummy" />
+		<to uri="testPassThroughComponent" />
+		<to uri="solrOutput" />
+	</path>
+
+</FlowDefinition>

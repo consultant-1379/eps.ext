@@ -1,0 +1,71 @@
+	------
+	IO adapter for Solr Exception Handling
+	------
+
+EpsExtensions - IO adapter for Solr - Exception Handling
+
+
+* Introduction
+
+	Solr output adapter receives multiple events at one time, grouped in a Collection, and processes
+        them in a single indexing request so in case of failure the entire Collection is rejected.
+
+	All network issues are managed, including Http errors like 404 "not found", setting the
+        "exceptionHandler" property it's possible to define the policy for reacting to these errors:
+
+*---------------------------------+----------------------------------------------------+-----------------------------------+
+|| Configuration parameter name   || Description                                       || Default value (acceptable range) |
+*---------------------------------+----------------------------------------------------+-----------------------------------+
+| exceptionHandler                |The action taken in case of failure in indexing,    | resubmit (resubmit/rollback)      |
+*---------------------------------+----------------------------------------------------+-----------------------------------+
+
+	All errors coming from Solr engine produce only log messages, and are not managed by this property.
+
+* Resubmit
+
+	Selecting 'resubmit' option the events affected by network issues are stored in a temporary cache
+        for further attempts of indexing.
+
+	The received Collections of events affected by errors are split so no commit congruence is granted
+        in case of multiple failures.
+
+	Cached events are sent for indexing every 5 seconds, other behavior details are managed by these
+        properties:
+
+*--------------------------------+----------------------------------------------------+-----------------------------------+
+|| Configuration parameter name  || Description                                       || Default value (acceptable range) |
+*--------------------------------+----------------------------------------------------+-----------------------------------+
+| resubmitTime                   |The number of resubmit attempts before discard the failing events | 1                   |
+*--------------------------------+----------------------------------------------------+-----------------------------------+
+| cacheSize                      |The max number of cached events, older              | 30000 (positive integer bigger of batchSize) |
+|                                | items are discarded if the cache is full           |                                   |
+*--------------------------------+----------------------------------------------------+-----------------------------------+
+| batchSize                      |The number of cached events sent for indexing in a  | 1000 (positive integer smaller of cacheSize) |
+|                                | single batch                                       |                                   |
+*--------------------------------+----------------------------------------------------+-----------------------------------+
+
+* Rollback
+
+	Selecting 'rollback' option the handler attempts to cancel the indexing operation for the entire
+        Collection received. This option is available only if the 'solrClientCommit' option is set.
+
+	The 'solrClientCommit' enables the explicit commit server-side, using the <autoCommit> settings
+        on the {{{https://wiki.apache.org/solr/SolrConfigXml}server configuration file}}.
+
+	The rollback of all events indexed in single operation is not granted because Solr has internal
+        automatic commit mechanism depending on internal configuration, see
+        {{{http://wiki.apache.org/solr/UpdateXmlMessages#A.22commit.22_and_.22optimize.22}Solr Wiki}}
+        for details.
+
+	The automatic commit behavior can also be influenced by these properties configured for this handler:
+
+*---------------------------------+----------------------------------------------------+-----------------------------------+
+|| Configuration parameter name   || Description                                       || Default value (acceptable range) |
+*---------------------------------+----------------------------------------------------+-----------------------------------+
+| softCommit                      |The flag makes index changes visible immediately    | false                             |
+*---------------------------------+----------------------------------------------------+-----------------------------------+
+| waitFlush                       |The flag for block explicit commit until index changes are flushed to disk | false      |
+*---------------------------------+----------------------------------------------------+-----------------------------------+
+| waitSearcher                    |The flag for block explicit commit until a new      | false                             |
+|                                 | searcher is opened and registered as the main query searcher |                         |
+*---------------------------------+----------------------------------------------------+-----------------------------------+

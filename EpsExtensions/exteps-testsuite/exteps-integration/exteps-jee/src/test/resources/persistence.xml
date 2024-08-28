@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+	<!-- 
+		Some properties are changed/defined in runtime. See SFWKEntityManagerFactory. 
+		We could have used placeholder variables ${} and system properties, as hibernate/jpa is able to replace
+		that automatically. However, when running SFWK as library, this persistence.xml file is read before
+		SFWK can set the system properties and then the deployment fails.
+	-->
+	<persistence-unit name="sfwk-pu" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<!-- By default, we use the in memory JBoss data source. -->
+		<jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
+		<class>com.ericsson.oss.itpf.sdk.db.entity.ConfigurationParameter</class>
+		<class>com.ericsson.oss.itpf.sdk.db.entity.EServiceInfo</class>
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" />
+		</properties>
+	</persistence-unit>
+
+</persistence>

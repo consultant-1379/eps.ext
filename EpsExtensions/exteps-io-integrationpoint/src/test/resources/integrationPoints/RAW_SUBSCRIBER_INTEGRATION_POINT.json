@@ -1,0 +1,20 @@
+{
+"type" : "SUBSCRIBER",
+"properties" : [
+        {"name" : "bootstrap.servers",           "value" : "localhost:9092"},
+        {"name" : "group.id",                    "value" : "1"},
+        {"name" : "auto.offset.reset",           "value" : "earliest"},
+        {"name" : "enable.auto.commit",          "value" : "true"},
+        {"name" : "session.timeout.ms",          "value" : "30000"},
+        {"name" : "auto.commit.interval.ms",     "value" : "1000"}
+],
+"destinations" : [
+        {"name" : "raw",
+         "properties" : [
+                {"name" : "key.deserializer",            "value" : "org.apache.kafka.common.serialization.ByteArrayDeserializer"},
+                {"name" : "value.deserializer",          "value" : "org.apache.kafka.common.serialization.ByteArrayDeserializer"}
+         ]
+        }
+    ]
+}
+

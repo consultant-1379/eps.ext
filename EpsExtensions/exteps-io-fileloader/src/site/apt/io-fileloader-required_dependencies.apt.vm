@@ -1,0 +1,15 @@
+	------
+	EPS Extensions - File Loader Extension - Dependencies
+	------
+
+EpsExtensions - File Loader Extension - Dependencies
+
+* 3PP dependencies
+
+	3PP used in EH Parser and its CAX number.
+
+*---------------------------------+-------------------------------------+-----------------------------------+
+|| 3PP                            || Description                        || CAX number                       |
+*---------------------------------+-------------------------------------+-----------------------------------+
+| {{{https://commons.apache.org/proper/commons-lang/}Apache Commons Lang ${version_apache_commons_lang}}} | Lang provides a host of helper utilities for the java.lang API       | {{{https://bazaar.internal.ericsson.com/component.php?componentid=3386}7/CAX1053253}} 		|
+*---------------------------------+-------------------------------------+-----------------------------------+

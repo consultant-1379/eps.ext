@@ -1,0 +1,101 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ericsson.component.aia.services.exteps</groupId>
+        <artifactId>EpsExtensions</artifactId>
+        <version>3.0.79-SNAPSHOT</version>
+    </parent>
+    <artifactId>exteps-io-generic-service</artifactId>
+    <name>EpsExt Generic IO service</name>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>${version.java}</source>
+                    <target>${version.java}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>check-style</id>
+                        <configuration>
+                            <failsOnError>false</failsOnError>
+                            <failOnViolation>true</failOnViolation>
+                            <maxAllowedViolations>8</maxAllowedViolations>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+
+
+        <dependency>
+            <groupId>com.ericsson.component.aia.common.transport</groupId>
+            <artifactId>transport-service</artifactId>
+            <version>${version.common.transport}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.component.aia.common.transport</groupId>
+            <artifactId>transport-service-kafka</artifactId>
+            <version>${version.common.transport}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.component.aia.services.exteps</groupId>
+            <artifactId>exteps-io-generic-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.component.aia.services.exteps</groupId>
+            <artifactId>exteps-io-generic-string</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.component.aia.services.exteps</groupId>
+            <artifactId>exteps-io-generic-raw</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    <dependency>
+            <groupId>com.ericsson.component.aia.services.exteps</groupId>
+            <artifactId>exteps-io-generic-avro</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ericsson.component.aia.common.avro</groupId>
+            <artifactId>avro-decoder</artifactId>
+            <version>${version.common.avro}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.component.aia.itpf.common.flow</groupId>
+            <artifactId>eventflow-api</artifactId>
+            <version>${version.common.flow}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.component.aia.services.eps</groupId>
+            <artifactId>eps-api</artifactId>
+            <version>${versionEps}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-core</artifactId>
+            <version>${version.dropwizard.metrics}</version>
+        </dependency>
+         <dependency>
+            <groupId>com.google.auto.service</groupId>
+            <artifactId>auto-service</artifactId>
+            <version>${version.auto.service}</version>
+        </dependency>
+    </dependencies>
+
+
+</project>

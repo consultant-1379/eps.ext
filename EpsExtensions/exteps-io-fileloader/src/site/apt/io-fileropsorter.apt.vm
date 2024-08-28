@@ -1,0 +1,42 @@
+	------
+	EPS Extensions - Rop Sorter Event Handler
+	------
+
+Rop Sorter Event Handler
+
+	It receives a list of files names and returns a map to be sent downstream.
+
+	The map returned is indexed by a combination of the ROP time and node name
+
+	This handler is suited for receiving the output from the File Collection Input Adapter
+
+	The output can be routed to the File Local Output Router Event Handler for selective dispatching
+
+	Is designed for working with node log filenames, they have a predefined format, containig info
+        about date, time, subnetwork, node and type of the file, an example is reported below:
+~~ look for some document describing this
+
++-------------------------------+
+
+	A20130430.1200+0200-1215+0200_SubNetwork=ONRM_RootMo_R,MeContext=LTE01ERBS00001_celltracefile_1.bin
+
++-------------------------------+
+
+Input Adapter class name
+
++-------------------------------+
+
+    com.ericsson.component.aia.services.exteps.ioadapter.file.FileRopSorterEventHandler
+
++-------------------------------+
+
+* Event Handler declaration in a flow descriptor
+
++-------------------------------+
+<!-- Sorting input handler -->
+<input name="sort">
+    <handler>
+        <className>com.ericsson.component.aia.services.exteps.ioadapter.file.FileRopSorterEventHandler</className>
+    </handler>
+</input>
++-------------------------------+

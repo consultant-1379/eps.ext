@@ -1,0 +1,20 @@
+	------
+	EPS Extensions
+	------
+
+EPS Extensions
+
+	EPS extensions are reusable {{{${flowFrameworkDocs}}event handlers and IO adapters}} that can be used inside flows
+        running in EPS flow engine.
+
+	EPS already comes with {{{${nexusRootUrl}/${epsDocs}/ext-builtin-components.html}built-in extensions}}
+        that are widely used. 
+        
+    EpsExtensions are potential candidates to be distributed with EPS. For now they are not distributed together with EPS but they can be installed
+    separately and used.
+        
+    It is recommended to either use some of existing EPS extensions or to contribute new ones so that we avoid multiple teams writing same IO adapters and handlers from scratch.
+    
+    If you want to contribute new extensions contact EPS team.
+
+	{{{${nexusRootUrl}/${epsDocs}}More info on EPS.}}

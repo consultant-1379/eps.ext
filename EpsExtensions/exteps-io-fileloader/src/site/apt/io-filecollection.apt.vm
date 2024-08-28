@@ -1,0 +1,39 @@
+	------
+	EPS Extensions - File Loader Extension - File Collection Input Adapter
+	------
+
+File Collection Input Adapter
+
+	The File Collection Input Adapter periodically scans the configured directories and outputs an
+        event containing the retrieved file list.
+
+	The list of watched directories, the start delay and scan interval delay are all configurable.
+
+	Can be configured for filtering the files with a Regular Expression.
+
+	Can be configured to skip files already processed by this handler but still present.
+
+	The list of already processed files is written in a hidden file with name '.last' put in watched
+        directories.
+
+	The File Collection Input Adapter use Threads in the
+        {{{./apidocs/com/ericsson/oss/services/exteps/ioadapter/file/FileCollectionInputAdapter.html}FileCollectionInputAdapter}} class.
+
+	The output is a Collection of retrieved file names, can be routed to the File Rop Sorter Event
+        Handler for further processing.
+
+Input Adapter declaration in a flow descriptor
+
++-------------------------------+
+
+    <!-- Streaming input adapter -->
+    <input name="fileCollectionInput">
+        <attribute name="uri" value="fileCollection:/" />
+        <attribute name="intialDelayMilliseconds" value="0" />
+        <attribute name="intervalValueMilliseconds" value="1000" />
+        <attribute name="parentDirectoryPath" value="target/files" />
+        <attribute name="directoryList" value="ERBS" />
+        <attribute name="fileRegex" value="*.data$" />
+    </input>
+
++-------------------------------+

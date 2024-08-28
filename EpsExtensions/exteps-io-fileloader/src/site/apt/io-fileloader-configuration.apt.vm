@@ -1,0 +1,27 @@
+	------
+	File Loader IO Adapter Configuration
+	------
+
+EpsExtensions - File Loader Extension - Configuration
+
+
+
+* Introduction
+
+	The File Loader Extension handlers should be added to the flow.
+
+	The order of handlers is fixed, but they need not all be used; they can be included as needed.
+        Expected order is:
+
+	* {{{./io-filecollection.html}File Collection IO Input Adapter}}.
+
+	* {{{./io-fileropsorter.html}Rop Sorter IO Event Handler}}.
+
+	* {{{./io-filelocaloutputrouter.html}Local Output Router IO Event Handler}}.
+
+        []
+
+	Only the {{{./io-filecollection.html}Collection IO Input Adapter}} has configurable parameters,
+        described {{{./io-filecollection-configuration.html}here}}.
+
+	See {{{./io-fileloader-examples.html}IO File Loader Examples}} for a flow example.

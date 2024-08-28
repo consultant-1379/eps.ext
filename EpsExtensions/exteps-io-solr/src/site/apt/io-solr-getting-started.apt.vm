@@ -1,0 +1,39 @@
+	------
+	IO adapter for Solr Getting Started
+	------
+
+EpsExtensions - IO adapter for Solr - Getting Started
+
+
+
+* Introduction
+
+	This is a simple getting started guide to using the Eps Extension IO adapter for Solr
+
+* Steps by Step
+
+	To configure and use Solr Output Adapter, follow the steps below.
+
+
+* Dependencies
+
+	<<Step 1:>> Add dependencies to application distribution package POM file
+
+	...
+
++-----+
+<dependency>
+    <groupId>com.ericsson.oss.services</groupId>
+    <artifactId>exteps-io-solr</artifactId>
+    <version>${project.version}</version>
+    <type>tar.gz</type>
+</dependency>
++-----+
+
+
+
+* Configure Flow
+
+	<<Step 2:>> Add and configure Solr Output Adapter to flow.
+
+	{{{./io-solr-examples.html}IO adapter for Solr Examples}}.

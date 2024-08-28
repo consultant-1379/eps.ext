@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="urn:com:ericsson:schema:xml:oss:fbp_flow"
+	xmlns:oc="urn:com:ericsson:schema:xml:oss:oss_common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	oc:ns="com.ericsson.oss.services" oc:name="TopologySolutionSet"
+	oc:version="1.0.0">
+
+	<oc:modelCreationInfo author="author"
+		creationDate="today">
+		<oc:designedModel componentId="topologycomponent" />
+	</oc:modelCreationInfo>
+
+	<oc:desc>loads Topology data into distribution cache from topology
+		files</oc:desc>
+
+	<!-- Define all input adapters here -->
+	<input name="fileCollectionInput">
+		<attribute name="uri" value="fileCollection:/" />
+		<attribute name="intialDelayMilliseconds" value="0" />
+		<attribute name="intervalValueMilliseconds" value="1000" />
+		<attribute name="parentDirectoryPath" value="#########" />
+		<attribute name="directoryList" value="ERBS" />
+		<attribute name="fileRegex" value=".*.xml$" />
+		<attribute name="ignoreDotLastFile" value="false" />
+	</input>
+	<!-- End -->
+
+	<!-- Define all output adapters here -->
+
+	<output name="fileIoAdapterReceiver">
+		<attribute name="uri" value="test_file_io_output:/" />
+	</output>
+
+	<!-- End -->
+
+
+	<!-- Define all Paths here -->
+	<path>
+		<from uri="fileCollectionInput" />
+		<to uri="fileIoAdapterReceiver" />
+	</path>
+	<!-- End -->
+
+</FlowDefinition>

@@ -1,0 +1,36 @@
+	------
+	Apache Kafka IO adapters - Configuration
+	------
+
+EpsExtensions - Apache Kafka IO adapters - Configuration
+
+
+* Input adapter
+
+*----------------------+-----------------------------+------------------------+
+|| Configuration       || Description                || Default value         |
+|| parameter name      ||                            || (acceptable range )   |
+*----------------------+-----------------------------+------------------------+
+| topicName            | Kafka topic name from which to read data |           |
+*----------------------+-----------------------------+------------------------+
+| threadPoolSize    | Number of threads to consume data from Kafka | 5        |
+*----------------------+-----------------------------+------------------------+
+
+	Input adapter supports all configuration properties applicable to Kafka consumers.
+
+	See {{{./kafka-examples.html} Kafka IO adapters flow examples}} for more details.
+
+* Output adapter
+
+*------------------------+-----------------------------+
+|| Configuration         || Description                |
+|| parameter name        ||                            |
+*------------------------+-----------------------------+
+| recordCreatorClassName | The name of class implementation implementing {{{./apidocs/com/ericsson/oss/services/exteps/ioadapter/kafka/KafkaProducerRecordCreator.html}com.ericsson.component.aia.services.exteps.ioadapter.kafka.KafkaProducerRecordCreator interface}}. This is required configuration property|
+*------------------------+-----------------------------+
+
+	Output adapter supports all configuration properties applicable to Kafka producers.
+
+ 	{{{http://kafka.apache.org/082/javadoc/index.html?org/apache/kafka/clients/producer/ProducerConfig.html}Kafka Producer configuration options}}
+ 
+ 	See {{{./kafka-examples.html} Kafka IO adapters flow examples}} for more details.

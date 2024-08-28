@@ -1,0 +1,62 @@
+	------
+	IO adapter for Solr CollectionBuilder
+	------
+
+EpsExtensions - IO adapter for Solr - CollectionBuilder
+
+
+* Introduction
+
+	In Apache Solr {{{https://cwiki.apache.org/confluence/display/solr/SolrCloud}SolrCloud}} a
+        {{{http://wiki.apache.org/solr/SolrTerminology}Collection}} is a logical index, distributed
+        across multiple nodes. Collection size should not grow too much because of performance concerns,
+        see {{{https://cwiki.apache.org/confluence/display/solr/How+SolrCloud+Works}How SolrCloud Works}}
+        for details.
+
+	For this reason the output adapters can periodically generate a new Collection with a runtime
+        computed name; this way events are distributed among different collections.
+
+	The {{{./apidocs/com/ericsson/oss/services/exteps/ioadapter/solr/external/SolrCollectionBuilder.html}SolrCollectionBuilder}}
+        interface define the function used for calculating at runtime the collection name:
+
++-------------------------------+
+
+    String buildCollection(final int retentionDay, final String timeZone);
+
++-------------------------------+
+
+	For using the functionality the 'solrCollectionBuilder' property should contain the classpath of
+        one class implementing the interface, here is an {{{./io-solr-examples.html}implementation example}}.
+
+	The two parameters retentionDay and timeZone should be passed as configuration properties for the
+        adapter:
+
+	Configuration properties for SolrCollectionBuilder:
+
+*-------------------------------+-----------------------------------------------------+-----------------------------------+
+|| Configuration parameter name || Description                                        || Default value (acceptable range) |
+*-------------------------------+-----------------------------------------------------+-----------------------------------+
+| retentionDay                  |The number used for generating the SOLR collection name  | 7                             |
+*-------------------------------+-----------------------------------------------------+-----------------------------------+
+| timeZone                      |The TimeZone for generating the SOLR collection name | "JST" (any valid TimeZone id)     |
+*-------------------------------+-----------------------------------------------------+-----------------------------------+
+
+
+* RetentionCollectionBuilder
+
+	An implementation of {{{./apidocs/com/ericsson/oss/services/exteps/ioadapter/solr/external/SolrCollectionBuilder.html}SolrCollectionBuilder}},
+        the {{{./apidocs/com/ericsson/oss/services/exteps/ioadapter/solr/external/collectionbuilder/RetentionCollectionBuilder.html}RetentionCollectionBuilder}}
+        is available in the extension package.
+
+	It returns a collection name which changes every day, using the algorithm below:
+
++-------------------------------+
+
+	String collectionName = "collection" + daysFrom_1970-01-01_for_configured_timezone % (retentionDay + 2)
+
++-------------------------------+
+
+	The data are split between retentionDay+2 different Solr collections, changed cyclically each day.
+
+	For example giving a retentionDay=5 you have seven different collection names, named from
+        'collection0' to 'collection6', each one containig data for a single weekday.

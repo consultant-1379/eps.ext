@@ -1,0 +1,41 @@
+	------
+	EPS Extensions - File Loader Extension - File Collection Input Adapter - Configuration
+	------
+
+File Collection Input Adapter - Configuration
+
+
+* Introduction
+
+		The FileCollectionInputAdapter should be added as input handler in the flow.xml definition, see
+                {{{./io-fileloader-examples.html}File Loader Extension Examples}}.
+
+		These parameters are attributes of the event handler element:
+
+	URI protocol <<fileCollection:/>>
+
+* File Collection Input Adapter configuration properties:
+
+
+*----------------------------------+----------------------------------------------------+-----------------------------------+
+|| Configuration parameter name    || Description                                       || Default value (acceptable range) |
+*----------------------------------+----------------------------------------------------+-----------------------------------+
+| intialDelayMilliseconds          |The milliseconds before the first event output      | 0                                 |
+*----------------------------------+----------------------------------------------------+-----------------------------------+
+| intervalValueMilliseconds        |The milliseconds interval between output events     | 300000                            |
+*----------------------------------+----------------------------------------------------+-----------------------------------+
+| parentDirectoryPath              |The root directory of all files, mandatory          | None (an existing directory)      |
+*----------------------------------+----------------------------------------------------+-----------------------------------+
+| directoryList                    |The list of directories where look for files,       | None (comma separated list of existing |
+|                                  | mandatory.                                         | sub-directory names of the parentDirectoryPath) |
+*----------------------------------+----------------------------------------------------+-----------------------------------+
+| fileRegex                        |The regexp for filtering input files by name        | .* (any valid regular expression) |
+*----------------------------------+----------------------------------------------------+-----------------------------------+
+| ignoreDotLastFile                |The flag for ignoring already processed files ,     | false (true/false)                |
+|                                  |history if true all files are always processed      |                                   |
+*----------------------------------+----------------------------------------------------+-----------------------------------+
+| lastFileSize                     |The max record number for already processed files story | 30000                         |
+*----------------------------------+----------------------------------------------------+-----------------------------------+
+| reductionPercentage              |The percent of already processed files story        | 30                                |
+|                                  | deleted when hit max record number                 |                                   |
+*----------------------------------+----------------------------------------------------+-----------------------------------+

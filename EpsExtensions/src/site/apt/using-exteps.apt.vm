@@ -1,0 +1,22 @@
+	------
+	EPS Extensions - How To Use
+	------
+
+How to use EPS Extensions
+
+	An EPS extension must follow {{{${nexusRootUrl}/${epsDocs}/eps-extensions.html}EPS guidelines}}
+        and can be {{{${nexusRootUrl}/${epsDocs}/flow-descriptor.html} added to a flow}}.
+
+Deployment
+
+	See {{{${nexusRootUrl}/${epsDocs}/eps-extensions.html} how to use EPS}}
+	for extensions deployment {{{${nexusRootUrl}/${epsDocs}/corr-set-deployment.html} that depends on EPS version}}.
+
+	EpsExtensions are released as <<zip>>/<<tar.gz>> files in Nexus. Assemblies of single extensions
+        are available as well as a bulk one.
+	Related 3PPs dependencies are included. Extensions cannot be deployed or run without EPS.
+        Not all extensions can be used outside ENM product,
+	because they rely on ENM infrastructure (notably mediation layer). See specific extension
+        documentation for this aspect.
+
+	To package extensions in your service artifact see {{{./required_dependencies.html} required dependencies}}.

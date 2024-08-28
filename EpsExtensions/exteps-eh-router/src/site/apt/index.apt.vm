@@ -1,0 +1,79 @@
+	------
+	EPS Extensions - Streamed Record Router Input Handler
+	------
+
+EpsExtensions - Routing Event Handlers
+
+ Routing Event Handlers select the next event handler to send a received event
+ to.
+
+ Two routing Event Handlers are provided:
+
+ * {{StrategyBasedEventRouter}}
+
+ * {{StreamedRecordRouter}}
+
+ []
+
+* {StrategyBasedEventRouter}
+
+ Generic configurable routing event handler for events. Incoming events are
+ routed according to a {{{./eh-router-configuration.html}configurable}} strategy.
+
+ A number of predefined routing strategies are
+ {{{./eh-router-configuration.html}provided}}. Alternatively, a custom routing
+ strategy can be provided.
+
+ A custom routing strategy must:
+
+ * implement the
+ {{{./apidocs/com/ericsson/oss/services/exteps/event/router/strategy/EventRoutingStrategy.html}EventRoutingStrategy}} interface
+
+     * the value returned by getName() must not clash with the predefined
+     strategy names
+     ( {{{./eh-router-configuration.html}eventRoutingStrategy}} values).
+
+
+ * add the implementation class name to
+ META-INF/services/com.ericsson.component.aia.services.exteps.event.router.strategy.EventRoutingStrategy
+
+ * place the jar in the application classpath
+
+ * use the custom routing strategy name when configuring the routing event
+   handler in the flow  (configuration parameter eventRoutingStrategy).
+   <<Note>> this is not the implemented routing strategy class name, but rather
+   the value returned by getName().
+
+
+[]
+
+ Applicable for any event type.
+
+** Event Handler class name
+
++-------------------------------+
+
+    com.ericsson.component.aia.services.exteps.event.router.StrategyBasedEventRouter
+
++-------------------------------+
+
+* {StreamedRecordRouter}
+
+ The StreamedRecordRouter Event Handler inspects a StreamedRecord input event,
+ and selects the subscriber (next event handler in flow) to send it to based
+ on the StreamedRecord sourceId.
+
+ The subscriber to send to is (sourceId mod the_number_of_subscribers).
+
+ Records from the same source are always dispatched to the same subscriber.
+
+ Only applicable where the received event is an instance of StreamedRecord.
+
+
+* Event Handler class name
+
++-------------------------------+
+
+    com.ericsson.component.aia.services.exteps.eh.router.StreamedRecordRouter
+
++-------------------------------+

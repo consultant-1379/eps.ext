@@ -1,0 +1,22 @@
+{
+"type" : "SUBSCRIBER",
+"properties" : [
+        {"name" : "bootstrap.servers",           "value" : "localhost:9092"},
+        {"name" : "group.id",                    "value" : "1"},
+        {"name" : "auto.offset.reset",           "value" : "earliest"},
+        {"name" : "key.deserializer",            "value" : "org.apache.kafka.common.serialization.StringDeserializer"},
+        {"name" : "value.deserializer",          "value" : "org.apache.kafka.common.serialization.StringDeserializer"},
+        {"name" : "auto.create.topics.enable",   "value" : "true"},
+        {"name" : "enable.auto.commit",          "value" : "true"},
+        {"name" : "session.timeout.ms",          "value" : "30000"},
+        {"name" : "rebalance.max.retries",       "value" : "3000"},
+        {"name" : "auto.commit.interval.ms",     "value" : "1000"}
+],
+"destinations" : [
+        {"name" : "avro",
+         "properties" : [
+                   {"name" : "thread_count", "value" : "5"}
+         ]
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+	------
+	EH Parser Examples
+	------
+
+EpsExtensions - EH Parser - examples
+
+
+* Event Handler declaration in a flow descriptor
+
++-------------------------------+
+<!-- Parser Event Handler -->
+<step name="parser">
+    <handler>
+        <className>com.ericsson.component.aia.services.exteps.eh.parser.PmRecordStreamParser</className>
+    </handler>
+    <attribute name="schema" value="celltrace" />
+    <attribute name="subnetwork" value="SubNetwork=ONRM_RootMo,SubNetwork=RNC01" />
+    <attribute name="utcoffset" value="+00.00" />
+    <attribute name="decodedEventType" value="generic_record"/>
+</step>
++-------------------------------+

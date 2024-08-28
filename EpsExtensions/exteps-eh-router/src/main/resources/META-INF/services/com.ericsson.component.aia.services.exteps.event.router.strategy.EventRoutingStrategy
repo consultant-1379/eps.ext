@@ -1,0 +1,5 @@
+com.ericsson.component.aia.services.exteps.event.router.strategy.AllRoutingStrategy
+com.ericsson.component.aia.services.exteps.event.router.strategy.NoneRoutingStrategy
+com.ericsson.component.aia.services.exteps.event.router.strategy.RoundRobinRoutingStrategy
+com.ericsson.component.aia.services.exteps.event.router.strategy.ShuffledRoutingStrategy
+com.ericsson.component.aia.services.exteps.event.router.strategy.PatternDrivenRoutingStrategy

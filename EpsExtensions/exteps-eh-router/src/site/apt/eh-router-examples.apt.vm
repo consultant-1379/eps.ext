@@ -1,0 +1,42 @@
+	------
+	EH Router Examples
+	------
+
+EpsExtensions - EH Router - examples
+
+
+* StrategyBasedEventRouter Event Handler declaration in a flow descriptor
+
++-------------------------------+
+<!-- Routing handler -->
+<input name="router">
+    <handler>
+        <className>com.ericsson.component.aia.services.exteps.event.router.StrategyBasedEventRouter</className>
+        <attribute name="eventRoutingStrategy" value="PATTERN" />
+        <attribute name="patternToEvaluate" value="ENB_UE_S1AP_ID#MME_UE_S1AP_ID#ENODEB_ID_MACRO_ENODEB_ID" />
+    </handler>
+</input>
++-------------------------------+
+
+ Where ENB_UE_S1AP_ID, MME_UE_S1AP_ID and ENODEB_ID_MACRO_ENODEB_ID are the
+ names of attributes in the received event, and <<#>> is the concatenation
+ operator.
+
+ If the number of subscribers is 2 and a received event has the values
+ ENB_UE_S1AP_ID = 1, MME_UE_S1AP_ID = 2, & ENODEB_ID_MACRO_ENODEB_ID = 3;
+ then the pattern ENB_UE_S1AP_ID#MME_UE_S1AP_ID#ENODEB_ID_MACRO_ENODEB_ID will
+ evaluate to the value 123, this value mod the number of subscribers (2)
+ results in selecting subscriber 1.
+ (long returned by patten applied to event % number of subscribers)
+
+
+* StreamedRecordRouter Event Handler declaration in a flow descriptor
+
++-------------------------------+
+<!-- Routing handler -->
+<input name="router">
+    <handler>
+        <className>com.ericsson.component.aia.services.exteps.eh.router.StreamedRecordRouter</className>
+    </handler>
+</input>
++-------------------------------+

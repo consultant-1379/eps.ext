@@ -1,0 +1,67 @@
+	------
+	EH Router Module Configuration
+	------
+
+EpsExtensions - EH Router - Configuration
+
+
+* StrategyBasedEventRouter
+
+*----------------------+-----------------------------+------------------------+
+|| Configuration       || Description                || Default value         |
+|| parameter name      ||                            || (acceptable range )   |
+*----------------------+-----------------------------+------------------------+
+| eventRoutingStrategy | The strategy to use when    |  ALL                   |
+|                      | routing events              |({{ALL}}, {{NONE}},     |
+|                      |                             |{{ROUND_ROBIN}},        |
+|                      |                             |{{SHUFFLED}}, {{PATTERN}} |
+*----------------------+-----------------------------+------------------------+
+| patternToEvaluate    | The pattern to apply to the | None.                  |
+|                      | received event, determines  | (a valid {{{mvelUrl}MVEL}} |
+|                      | the subscriber to send the  | expression which       |
+|                      | event to.\                  | returns a long value)  |
+|                      | Must return a long value. \ |                        |
+|                      | Only applicable where the   |                        |
+|                      | eventRoutingStrategy is     |                        |
+|                      | PATTERN                     |                        |
+*----------------------+-----------------------------+------------------------+
+
+
+** eventRoutingStrategy
+
+ The following Routing Strategies are provided:
+
+ * {ALL}
+
+ Received event is sent to all subscribers.
+
+ * {NONE}
+
+ Received event is not sent to any subscriber, it is discarded (behaves like
+ /dev/null).
+
+ * {ROUND_ROBIN}
+
+ Received event is sent to subscribers sequentially in a circular manner.
+ (when an event is sent to the last subscriber, the next event will be sent to
+ the first subscriber and so it continues).
+
+ * {SHUFFLED}
+
+ Received event is sent to a pseudo-randomly selected subscriber.
+
+ * {PATTERN}
+
+ Received event is sent to a subscriber based on the application of the
+ configured pattern.
+
+ The {{{mvelUrl}MVEL}} pattern is specified with configuration parameter
+ <<patternToEvaluate>> and must return a long value.
+ The subscriber to send to is
+ (the pattern_value_as_long mod the_number_of_subscribers).
+
+
+
+* StreamedRecordRouter
+
+	The StreamedRecordRouter is not configurable.

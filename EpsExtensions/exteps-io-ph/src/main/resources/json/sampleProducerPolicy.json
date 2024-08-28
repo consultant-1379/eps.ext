@@ -1,0 +1,38 @@
+{
+"LTE_EVENTS_POLICY": {
+  "producer": {
+    "properties": [
+      {"bootstrap.servers": "127.0.0.1:2181"},
+      {"acks": "all"},
+      {"retries": "0"},
+      {"batch.size": "16384"},
+      {"linger.ms": "1"},
+      {"buffer.memory": "33554432"},
+      {"key.serializer": "org.apache.kafka.common.serialization.StringSerializer"},
+      {"value.serializer": "org.apache.kafka.common.serialization.StringSerializer"}
+    ],
+    "topics" : [
+    	{
+    		"name" : "ee_undecoded",
+	    	"partition_count" : "5",
+	    	"partition_class" : "org.ericsson.aia.common.partition.Partitioner",
+	    	"events" : [
+	    		{"name" : "RRC_CONNECTION_SETUP"},
+	    		{"name" : "RRC_CONNECTION_CLOSE"},
+	    		{"name" : "RRC_CONNECTION_INITATE"}
+	    	]
+    	},
+    	{
+    		"name" : "apollo_decoded",
+	    	"partition_count" : "3",
+	    	"events" : [
+	    		{"name" : "X2_HANDOVER_REQUEST"},
+	    		{"name" : "X2_HANDOVER_PREP"},
+	    		{"name" : "S1_PREP"},
+	    		{"name" : "S1_HANDOVER_EXEC"}
+	    	]
+    	} 
+    ]
+  }
+}
+}

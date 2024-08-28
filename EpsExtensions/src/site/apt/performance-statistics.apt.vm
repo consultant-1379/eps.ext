@@ -1,0 +1,18 @@
+	------
+	EPS Extensions - Performance Statistics
+	------
+
+EPS Extensions - Performance Statistics
+
+* Instrumentation
+
+
+ If EPS statistics collection is {{{${nexusRootUrl}/${epsDocs}/configuration-options.html} enabled}}),
+ then the number of events received by PmRecordStreamParser is recorded.
+ This is a default EPS measurement for every event handler/adapter.
+
+ The output format for collected statistics is
+ {{{${nexusRootUrl}/${epsDocs}/configuration-options.html} configurable}}.
+
+ If an extensions provides additional custom metrics, it will be described in
+ the handler/adapter specific documentation.

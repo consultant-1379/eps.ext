@@ -1,0 +1,36 @@
+	------
+	EH Parser Getting Started
+	------
+
+EpsExtensions - EH Parser - Getting Started
+
+
+* Introduction
+
+	This is a simple getting started guide to using the Eps Extension EH Parser
+
+* Steps by Step
+
+	To configure and use eh-parser, follow the steps below.
+    Update your application distribution package, to include a dependency on
+    exteps-eh-parser
+
+* Dependencies
+
+    <<Step 1:>> Add dependency to application distribution package POM file
+
+
++-----+
+<dependency>
+    <groupId>com.ericsson.oss.services</groupId>
+    <artifactId>exteps-eh-parser</artifactId>
+    <version>${project.version}</version>
+    <type>tar.gz</type>
+ </dependency>
++-----+
+
+
+	<<Step 2:>> Add and configure parser handler to flow.
+
+	See {{{./eh-parser-examples.html}EH Parser Examples}}.
+

@@ -1,0 +1,195 @@
+	------
+	IO adapter for Solr Examples
+	------
+
+EpsExtensions - IO adapter for Solr - examples
+
+
+* Event flow with output to Solr indexing
+
+	This flow send for indexing all event received in the "solrOutput" step
+
++-------------------------------+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="urn:com:ericsson:schema:xml:oss:fbp_flow"
+	xmlns:oc="urn:com:ericsson:schema:xml:oss:oss_common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	oc:ns="com.test.ext" oc:name="SolrFlow" oc:version="1.1.0">
+
+	<oc:modelCreationInfo author="author"
+		creationDate="today">
+		<oc:designedModel componentId="someComponentId" />
+	</oc:modelCreationInfo>
+
+	<oc:desc>Solr test flow</oc:desc>
+
+	<input name="hcInput">
+		<attribute name="uri" value="hazelcast:/" />
+		<attribute name="channelName" value="eps-topic1" />
+	</input>
+
+	<step name="batch">
+		<handler>
+			<className>com.ericsson.oss.services.eps.builtin.components.BatchComponent</className>
+		</handler>
+		<attribute name="maxBatchSize" value="3000" />
+		<attribute name="flushBatchPeriodMillis" value="1000" />
+	</step>
+
+	<!-- sends all event received to Solr for indexing -->
+	<output name="solrOutput">
+		<attribute name="uri" value="solr:/" />
+		<attribute name="zkQuorum" value="127.1.1.0:1234" />
+		<attribute name="solrCollection" value="example" />
+	</output>
+
+	<path>
+		<from uri="hcInput" />
+		<to uri="batch" />
+		<to uri="solrOutput" />
+	</path>
+
+</FlowDefinition>
+
++-------------------------------+
+
+* Event flow with rollback on error
+
+ This flow for networking error rollback the indexing of events, so in case of error the involved
+ events are lost, also use the
+ {{{./apidocs/com/ericsson/oss/services/exteps/ioadapter/solr/external/collectionbuilder/RetentionCollectionBuilder.html}RetentionCollectionBuilder}}
+ class for generate the collection name
+
++-------------------------------+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="urn:com:ericsson:schema:xml:oss:fbp_flow"
+	xmlns:oc="urn:com:ericsson:schema:xml:oss:oss_common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	oc:ns="com.test.ext" oc:name="SolrFlow" oc:version="1.1.0">
+
+	<oc:modelCreationInfo author="author"
+		creationDate="today">
+		<oc:designedModel componentId="someComponentId" />
+	</oc:modelCreationInfo>
+
+	<oc:desc>Solr test flow</oc:desc>
+
+	<input name="hcInput">
+		<attribute name="uri" value="hazelcast:/" />
+		<attribute name="channelName" value="eps-topic1" />
+	</input>
+
+	<step name="batch">
+		<handler>
+			<className>com.ericsson.oss.services.eps.builtin.components.BatchComponent</className>
+		</handler>
+		<attribute name="maxBatchSize" value="3000" />
+		<attribute name="flushBatchPeriodMillis" value="1000" />
+	</step>
+
+	<!-- sends all event received to Solr for indexing -->
+	<output name="solrOutput">
+		<attribute name="uri" value="solr:/" />
+		<attribute name="zkQuorum" value="127.1.1.0:1234" />
+		<attribute name="solrClientCommit" value="true" />
+		<attribute name="waitSearcher" value="true" />
+		<attribute name="exceptionHandler" value="rollback" />
+		<attribute name="solrCollectionBuilder" value="com.ericsson.component.aia.services.exteps.ioadapter.solr.external.collectionbuilder.RetentionCollectionBuilder" />
+		<attribute name="retentionDay" value="5" />
+		<attribute name="timeZone" value="UTC+1" />
+	</output>
+
+	<path>
+		<from uri="hcInput" />
+		<to uri="batch" />
+		<to uri="solrOutput" />
+	</path>
+
+</FlowDefinition>
+
++-------------------------------+
+
+* Event flow with resubmit on error
+
+	This flow on network error will retry the indexing, events are lost only if network error persist
+        until the cache is full.
+
++-------------------------------+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="urn:com:ericsson:schema:xml:oss:fbp_flow"
+	xmlns:oc="urn:com:ericsson:schema:xml:oss:oss_common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	oc:ns="com.test.ext" oc:name="SolrFlow" oc:version="1.1.0">
+
+	<oc:modelCreationInfo author="author"
+		creationDate="today">
+		<oc:designedModel componentId="someComponentId" />
+	</oc:modelCreationInfo>
+
+	<oc:desc>Solr test flow</oc:desc>
+
+	<input name="hcInput">
+		<attribute name="uri" value="hazelcast:/" />
+		<attribute name="channelName" value="eps-topic1" />
+	</input>
+
+	<step name="batch">
+		<handler>
+			<className>com.ericsson.oss.services.eps.builtin.components.BatchComponent</className>
+		</handler>
+		<attribute name="maxBatchSize" value="3000" />
+		<attribute name="flushBatchPeriodMillis" value="1000" />
+	</step>
+
+	<!-- sends all event received to Solr for indexing -->
+	<output name="solrOutput">
+		<attribute name="uri" value="solr:/" />
+		<attribute name="zkQuorum" value="127.1.1.0:1234" />
+		<attribute name="solrClientCommit" value="true" />
+		<attribute name="softCommit" value="true" />
+		<attribute name="exceptionHandler" value="resubmit" />
+		<attribute name="cacheSize" value="60000" />
+		<attribute name="batchSize" value="500" />
+		<attribute name="httpConnectionTimeout" value="100000" />
+		<attribute name="httpSocketTimeout" value="100000" />
+		<attribute name="httpMaxConnections" value="3000" />
+		<attribute name="httpMaxConnectionsPerHost" value="500" />
+		<attribute name="solrCollection" value="example" />
+	</output>
+
+	<path>
+		<from uri="hcInput" />
+		<to uri="batch" />
+		<to uri="solrOutput" />
+	</path>
+
+</FlowDefinition>
+
++-------------------------------+
+
+* example of {{{./apidocs/com/ericsson/oss/services/exteps/ioadapter/solr/external/SolrCollectionBuilder.html}SolrCollectionBuilder}} implementation
+
+ see {{{./io-solr-collectionbuilder.html}here}} for details
+
++-------------------------------+
+
+public class ExampleSolrCollection implements SolrCollectionBuilder {
+
+    @Override
+    @Deprecated
+    public String buildCollection() {
+        return buildCollection(7, "JST");
+    }
+
+    /*
+     * Generate a new collection name every retentionDay days
+     */
+    @Override
+    public String buildCollection(final int retentionDay, final String timeZone) {
+        final int today = (int) (new Date().getTime() / 1000 / 86400); //get the day no from 1970-01-01
+        return "collectionExample_" + ((today/retentionDay)*retentionDay);
+    }
+
+}
+
++-------------------------------+

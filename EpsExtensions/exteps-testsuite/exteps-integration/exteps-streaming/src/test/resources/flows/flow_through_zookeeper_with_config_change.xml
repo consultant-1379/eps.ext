@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="urn:com:ericsson:schema:xml:oss:fbp_flow"
+	xmlns:oc="urn:com:ericsson:schema:xml:oss:oss_common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	oc:ns="com.test1" oc:name="testFlow1" oc:version="1.1.0">
+
+	<oc:modelCreationInfo author="author"
+		creationDate="today">
+		<oc:designedModel componentId="someComponentId" />
+	</oc:modelCreationInfo>
+
+	<oc:desc>example flows</oc:desc>
+
+
+	 
+	<input name="streamInput">
+		<attribute name="uri" value="adaptive-streaming:/" />
+	</input>
+	
+	<output name="output"> 
+		<attribute name="uri" value="zookeeper-test-output" />
+	</output>
+
+	
+
+	<path>
+		<from uri="streamInput" />
+		<to uri="output" />
+	</path>
+
+</FlowDefinition>

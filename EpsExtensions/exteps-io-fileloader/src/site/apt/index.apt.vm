@@ -1,0 +1,32 @@
+	------
+	EPS Extensions - File Loader Extension
+	------
+
+File Loader Extension
+
+	The File Loader Extension allows an EPS flow to send periodically an event with file names
+        retrieved in given directories.
+
+	Retrieved files can be filtered, sorted and dispatched through configuration.
+
+	This extension is designed to work with node log files produced by Mediation File Collection
+        Handlers: the log files should be in configured directories, and have formatted file names.
+~~ put in reference to mediation docs when available
+
+	The functionality is implemented through three handlers in order to optimize performance and
+        flexibility, these handlers can be chained as need, they are:
+
+* File Collection IO Input Adapter
+
+	{{{./io-filecollection.html}File Collection IO Input Adapter}} periodically scans configured
+        directory and sends an event with newly discovered files.
+
+* Rop Sorter IO Event Handler
+
+	{{{./io-fileropsorter.html}Rop Sorter IO Event Handler}} takes in input a list of files and returns
+        in output the same files as a Map, indexed by node and ROP date.
+
+* Local Output Router IO Event Handler
+
+	{{{./io-filelocaloutputrouter.html}Local Output Router IO Event Handler}} dispatches file events to
+        different outputs, depending on source node.

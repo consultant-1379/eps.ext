@@ -1,0 +1,28 @@
+	------
+	EH Parser Module Configuration
+	------
+
+EpsExtensions - EH Parser - Configuration
+
+
+* Introduction
+
+		The PmRecordStreamParser should be added as input handler in the flow.xml definition,
+                see {{{./eh-parser-examples.html}EH Parser Examples}}.
+
+		These parameters are mandatory attributes of the event handler element:
+
+*---------------------------------+-------------------------------------+-----------------------------------+
+|| Configuration parameter name   || Description                        || Default value (acceptable range) |
+*---------------------------------+-------------------------------------+-----------------------------------+
+| schematype                      | The schema for the PM events.       | None. (a com.ericsson.component.aia.model.base.config.bean.SchemaEnum |
+|                                 |                                     | value e.g. "CELLTRACE", "CTUM", "EBM") |
+*---------------------------------+-------------------------------------+-----------------------------------+
+| subnetwork                      | The SubNetwork for the PM events.   | None (a valid subnetwork)         |
+*---------------------------------+-------------------------------------+-----------------------------------+
+| utcoffset                       | The UTC offset for the PM events.   | None (any valid UTC offset:http://en.wikipedia.org/wiki/UTC_offset) |
+*---------------------------------+-------------------------------------+-----------------------------------+
+| decodedEventType                | The out format of the decoded events.| GENERIC_RECORD (a com.ericsson.component.aia.model.base.config.bean.DecodedEventType |
+|                                 |                                     | value e.g. "POJO", "MAP", "GENERIC_RECORD",|
+|                                 |                                     | "MAP_ORDERED_ENUM")                |
+*---------------------------------+-------------------------------------+-----------------------------------+

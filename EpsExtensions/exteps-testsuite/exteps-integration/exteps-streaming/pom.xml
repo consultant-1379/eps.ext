@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+    <groupId>com.ericsson.component.aia.services.exteps</groupId>
+    <artifactId>exteps-integration</artifactId>
+    <version>3.0.79-SNAPSHOT</version>
+    </parent>
+    <artifactId>exteps-streaming</artifactId>
+    <name>EPS Extensions TestSuite Integration Streaming </name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-test</artifactId>
+            <version>${version.apache.curator}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.oss.itpf.sdk</groupId>
+            <artifactId>sdk-cluster-zookeeper</artifactId>
+            <version>${version_service_framework}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.component.aia.itpf.common.flow</groupId>
+            <artifactId>eventflow-api</artifactId>
+            <version>${version_FlowFramework}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>exteps-io-streaming</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.component.aia.services.eps</groupId>
+            <artifactId>eps-jse</artifactId>
+            <version>${versionEps}</version>
+        <exclusions>
+            <exclusion>
+                <groupId>com.ericsson.oss.mediation.netty.extension</groupId>
+                <artifactId>jaxb-configuration-provider</artifactId>
+            </exclusion>
+        </exclusions>
+        </dependency>
+    </dependencies>
+</project>

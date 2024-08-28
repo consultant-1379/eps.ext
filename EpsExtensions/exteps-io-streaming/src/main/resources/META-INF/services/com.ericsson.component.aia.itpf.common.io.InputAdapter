@@ -1,0 +1,2 @@
+com.ericsson.component.aia.services.exteps.io.adapter.streaming.StreamingInputAdapter
+com.ericsson.component.aia.services.exteps.io.adapter.streaming.ReactiveStreamingInputAdapter

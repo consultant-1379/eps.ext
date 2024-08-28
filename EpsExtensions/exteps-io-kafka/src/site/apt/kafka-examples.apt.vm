@@ -1,0 +1,53 @@
+	------
+	Kafka IO adapters Examples
+	------
+
+EpsExtensions - Kafka IO adapters - examples
+
+
+* Input adapter
+
++-------------------------------+
+<input name="kafkaInput">
+	<attribute name="uri" value="kafka:/"/>
+	<!-- from what Kafka topic to read data -->
+	<attribute name="topicName" value="MyKafkaTopicName"/>
+	<!-- how many threads should read data in parallel from topic -->
+	<attribute name="threadPoolSize" value="5"/>
+	
+	<!-- standard Kafka consumer configuration properties can be used, as shown below. See Kafka Consumer API for details-->
+	<!-- required properties -->
+	<attribute name="zookeeper.connect" value="zookeeper_ip1:2181,zookeeper_ip2:2181" />
+	<attribute name="group.id" value="my_test_group" />
+	
+	<!-- optional properties -->
+	<attribute name="zookeeper.session.timeout.ms" value="400" />
+	<attribute name="zookeeper.sync.time.ms" value="200" />
+	<attribute name="auto.commit.interval.ms" value="1000" />
+</input>
++-------------------------------+
+
+* Output adapter
+
++-------------------------------+
+<output name="kafkaOutput">
+	<attribute name="uri" value="kafka:/"/>
+	
+	<!-- This class determines topic name, partition, key and value -->
+	<attribute name="recordCreatorClassName" value="com.ericsson.MyCreator" />
+	
+	<!-- standard Kafka producer configuration properties can be used, as shown below. See Kafka producer API for details-->
+	<!-- required properties -->
+	<attribute name="key.serializer" value="org.apache.kafka.common.serialization.StringSerializer" />
+	<attribute name="value.serializer" value="org.apache.kafka.common.serialization.StringSerializer" />
+	<attribute name="bootstrap.servers" value="kafka_broker_ip:9092,kafka_broker_ip2:9092" />
+	
+	<!-- optional properties -->
+	<attribute name="retries" value="3" />
+	<attribute name="acks" value="1" /> <!-- 0, 1, all -->
+	<attribute name="compression.type" value="none" />
+	<attribute name="batch.size" value="200" />
+	<attribute name="block.on.buffer.full" value="true" />
+	
+</output>
++-------------------------------+

@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Dependencies: com.ericsson.oss.services.eps:3.x services export optional, com.ericsson.oss.itpf.sdk.service-framework:3.x services export optional
+Build-Jdk: 1.7.0_25
+Created-By: Apache Maven 3.0.5
+Archiver-Version: Plexus Archiver

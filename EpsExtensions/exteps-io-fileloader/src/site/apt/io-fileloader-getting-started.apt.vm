@@ -1,0 +1,39 @@
+	------
+	File Loader Extension Getting Started
+	------
+
+EpsExtensions - File Loader Extension - Getting Started
+
+
+
+* Introduction
+
+	This is a simple getting started guide to using the Eps File Loader Extension
+
+* Steps by Step
+
+	To configure and use eh-router, follow the steps below.
+
+
+* Dependencies
+
+    <<Step 1:>> Add dependencies to application distribution package POM file
+
+	...
+
++-----+
+<dependency>
+	<groupId>com.ericsson.oss.services</groupId>
+	<artifactId>exteps-io-fileloader</artifactId>
+    <version>${project.version}</version>
+    <type>tar.gz</type>
+</dependency>
++-----+
+
+
+* Configure Flow
+
+
+    <<Step 3:>> Add and configure the handlers to flow.
+
+    See {{{./io-fileloader-examples.html}IO File Loader Examples}}.

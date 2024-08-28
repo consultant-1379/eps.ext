@@ -1,0 +1,30 @@
+	------
+	EPS Extensions - Local Output Router Event Handler
+	------
+
+Local Output Router Event Handler
+
+	Receives a Map of file names and dispatch each file to multiple registered subscribers.
+
+	Subscribers are selected by node name, so files from one node are always sent to the same subscriber.
+
+	This handler is suited for receiving the output from the File Rop Sorter Event Handler
+
+Input Adapter class name
+
++-------------------------------+
+
+    com.ericsson.component.aia.services.exteps.ioadapter.file.FileToLocalOutputRouter
+
++-------------------------------+
+
+Event Handler declaration in a flow descriptor
+
++-------------------------------+
+<!-- Router input handler -->
+<input name="router">
+    <handler>
+        <className>com.ericsson.component.aia.services.exteps.ioadapter.file.FileToLocalOutputRouter</className>
+    </handler>
+</input>
++-------------------------------+

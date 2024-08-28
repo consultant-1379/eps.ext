@@ -1,0 +1,45 @@
+<project xmlns="http://maven.apache.org/DECORATION/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+   <bannerLeft>
+    	<name>EPS extensions</name>
+    	<href>http://www.ericsson.com/</href>
+    </bannerLeft>
+    
+    <bannerRight>
+    	<src>images/logo.png</src>
+    	<href>http://www.ericsson.com/</href>
+    </bannerRight>
+    
+    <poweredBy>
+    	<logo name="Ericsson" href="http://www.ericsson.com/" img="images/logo.png" />
+    </poweredBy>
+  <body>
+
+	<menu ref="parent" />
+
+    <menu name="Eh Parser"> 
+      <item name="Home" href="/index.html"/>
+      <item name="Getting Started" href="/eh-parser-getting-started.html"/>
+      <item name="Configuration" href="/eh-parser-configuration.html"/>
+      <item name="Required dependencies" href="/eh-parser-required_dependencies.html"/>
+      <item name="Performance Statistics" href="/performance-statistics.html"/> 
+	  <item name="JavaDocs" href="/apidocs/index.html"/> 
+    </menu>
+    
+    <menu name="Maven Reports">
+			<item name="Project Information" href="/project-info.html"/>
+    		<item name="Project Reports" href="/project-reports.html"/>    		
+    	</menu>
+      
+      <menu name="Examples"> 
+      	<item name="Eh Parser Module Example" href="/eh-parser-examples.html"/>
+      </menu>
+  </body>
+  
+  <skin>
+        <groupId>com.ericsson.nms.pres.client</groupId>
+        <artifactId>EricssonSkin</artifactId>
+        <version>1.0-RELEASE</version>
+    </skin>
+</project>

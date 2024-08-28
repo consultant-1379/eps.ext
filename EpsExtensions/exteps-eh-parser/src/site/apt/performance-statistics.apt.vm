@@ -1,0 +1,28 @@
+	------
+	EH Parser Module - Performance Statistics
+	------
+
+EH Parser Module - Performance Statistics
+
+* Instrumentation
+
+ If {{{${nexusRootUrl}/${epsDocs}/jmx-statistics.html}EPS statistics}} collection is enabled
+ PmRecordStreamParser provides the following custom metrics:
+
+*-------------------------------------------+-------------------+---------------------------------------------------------+
+|| Measurement name                         || Statistics  || Description                                                 |
+||                                          || Type        ||                                                             |
+*-------------------------------------------+--------------+--------------------------------------------------------------+
+| PmRecordStreamParser@eventsReceived       | Meter        | Incremented for every PM event received,                     |
+|                                           |              | includes events which will not be parsed successfully.       |
+*-------------------------------------------+--------------+--------------------------------------------------------------+
+| PmRecordStreamParser@eventsProcessed      | Meter        | Incremented for every PM event which is successfully parsed. |
+*-------------------------------------------+--------------+--------------------------------------------------------------+
+| PmRecordStreamParser@connectionsReceived  | Meter        | Incremented for every CONNECTION record received.            |
+|                                           |              | Indicates that a Network Element has connected to            |
+|                                           |              | OSS PM Stream termination.                                   |
+*-------------------------------------------+--------------+--------------------------------------------------------------+
+| PmRecordStreamParser@disconnectsReceived  | Meter        | Incremented for every DISCONNECTION record received.         |
+|                                           |              | Indicates that a Network Element has disconnected from OSS   |
+|                                           |              | PM Stream termination.                                       |
+*-------------------------------------------+--------------+--------------------------------------------------------------+

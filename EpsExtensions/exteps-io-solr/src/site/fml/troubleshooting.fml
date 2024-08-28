@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faqs id="Troubleshooting" title="Eps Extensions Troubleshooting">
+  <part id="General">
+    <faq id="faq1">
+      <question>First question?</question>
+      <answer>
+        <p>
+          Exhaustive answer.
+        </p>
+      </answer>
+    </faq>
+  </part>
+</faqs>

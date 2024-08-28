@@ -1,0 +1,23 @@
+{
+"LTE_EVENTS_POLICY": {
+  "consumer": {
+    "properties": [
+      {"zookeeper.connect": "127.0.0.1:2181"},
+      {"group.id": "LTE_EVENTS"},
+      {"zookeeper.session.timeout.ms": "400"},
+      {"zookeeper.sync.time.ms": "200"},
+      {"auto.commit.interval.ms": "1000"}
+    ],
+    "thread_count" : "5",
+    "topics" : [
+    	{
+	    	"name" : "apollo_decoded",
+	    	"events" : [
+	    		{"name" : "RRC_CONNECTION_SETUP"},
+	    		{"name" : "RRC_CONNECTION_CLOSE"},
+	    		{"name" : "RRC_CONNECTION_INITATE"}
+	    	]
+    	}
+    ]  
+  }
+}}

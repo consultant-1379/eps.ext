@@ -1,0 +1,20 @@
+	------
+	File Loader IO Adapter Module - Performance Statistics
+	------
+
+File Loader IO Adapter Module - Performance Statistics
+
+
+* Instrumentation
+
+	If {{{${nexusRootUrl}/${epsDocs}/jmx-statistics.html}EPS statistics}} collection is enabled the
+        File Loader IO Adapter Module provide the following custom metrics:
+
+*----------------------------+-------------------+-----------------------------------------------------+
+|| Measurement name          || Statistics Type  || Description                                        |
+*----------------------------+-------------------+-----------------------------------------------------+
+| batchesSent                | Meter             | Incremented for event (collection of files) sent to subscribers     |
+*----------------------------+-------------------+-----------------------------------------------------+
+| totalFilesSent             | Counter           | Incremented for each file sent to subscribers       |
+*----------------------------+-------------------+-----------------------------------------------------+
+

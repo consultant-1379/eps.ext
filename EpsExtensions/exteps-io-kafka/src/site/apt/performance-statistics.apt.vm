@@ -1,0 +1,25 @@
+	------
+	Kafka IO adapters Module - Performance Statistics
+	------
+
+Kafka IO adapters Module - Performance Statistics
+
+* Instrumentation
+
+	Performance statistics available if {{{${nexusRootUrl}/${epsDocs}/jmx-statistics.html}EPS statistics}} collection is enabled.
+	
+	    Kafka IO Input Adapter Module provide the following custom metrics:
+
+*----------------------------+-------------------+-----------------------------------------------------+
+|| Measurement name          || Statistics Type  || Description                                        |
+*----------------------------+-------------------+-----------------------------------------------------+
+| <topic mame>_eventReceived | Meter             | Incremented for every event sent to subscribers     |
+*----------------------------+-------------------+-----------------------------------------------------+
+
+	    Kafka IO Output Adapter Module provide the following custom metrics:
+
+*----------------------------+-------------------+-----------------------------------------------------+
+|| Measurement name          || Statistics Type  || Description                                        |
+*----------------------------+-------------------+-----------------------------------------------------+
+| <record creator class name>_eventSent	| Meter  | Incremented for every event output to Kafka         |
+*----------------------------+-------------------+-----------------------------------------------------+

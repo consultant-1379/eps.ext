@@ -1,0 +1,25 @@
+{
+"LTE_EVENTS_POLICY": {
+  "consumer": {
+    "properties": [
+      {"zookeeper.connect": "127.0.0.1:2181"},
+      {"group.id": "LTE_EVENTS"},
+      {"zookeeper.session.timeout.ms": "400"},
+      {"zookeeper.sync.time.ms": "200"},
+      {"auto.commit.interval.ms": "1000"}
+    ],
+    "thread_count" : "5",
+    "topics" : [
+    	{
+	    	"name" : "ee_undecoded",
+	    	"events" : [
+	    		{"name" : "X2_HANDOVER_REQUEST"},
+	    		{"name" : "X2_HANDOVER_PREP"},
+	    		{"name" : "S1_PREP"},
+	    		{"name" : "S1_HANDOVER_EXEC"}
+	    	]
+    	} 
+    ]  
+  }
+}
+}

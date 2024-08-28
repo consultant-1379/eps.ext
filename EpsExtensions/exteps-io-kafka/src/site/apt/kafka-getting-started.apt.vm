@@ -1,0 +1,27 @@
+	------
+	Kafka IO adapters Getting Started
+	------
+
+EpsExtensions - Kafka IO adapters - Getting Started
+
+
+* Dependencies
+
+    <<Step 1:>> Add dependency to application distribution package POM file
+
++-----+
+    <dependency>
+        <groupId>com.ericsson.oss.services</groupId>
+        <artifactId>exteps-io-kafka</artifactId>
+        <version>${project.version}</version>
+        <type>tar.gz</type>
+    </dependency>
++-----+
+
+	[]
+
+* Using the adapters
+
+    <<Step 3:>> Add and configure the Kafka IO adapters in a flow.
+
+    See {{{./kafka-examples.html} Kafka IO adapters flow examples}}.

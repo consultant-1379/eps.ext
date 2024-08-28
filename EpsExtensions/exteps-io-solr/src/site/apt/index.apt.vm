@@ -1,0 +1,43 @@
+	------
+	EPS Extensions - IO adapter for Solr
+	------
+
+EpsExtensions - IO adapter for Solr
+
+	The Solr Output Adapter receives a single event object, or a collection of event objects, and
+        forwards them to a search engine to be indexed for future search and analysis.
+
+	The search engine used is {{{http://lucene.apache.org/solr/}Apache Solr ${version_apache_solr}}},
+        a centralized and clustered search engine.
+
+	In case of failure the incoming event Objects can be stored in a temporary cache for retry the
+        process (this depends on error handling configuration).
+
+	This adapter behaves like a Solr client using Solr APIs. The Solr server is supposed to run on a
+        remote cluster and indexing requests are sent using the Http protocol.
+
+	Solr embeds {{{https://zookeeper.apache.org/}Apache ZooKeeper}} as a repository for cluster
+        configuration and coordination, so the accessing address and port of a ZooKeper Quorum must be
+        configured in the flow descriptor.
+        See {{{http://zookeeper.apache.org/doc/r3.1.2/zookeeperStarted.html}ZooKeeper Getting Started Guide}}
+        for details.
+
+        <<NOTE>> The Solr Output Adapter:
+
+        * can only be used with EPS in a JSE deployment (extensions which report custom statistics are
+        restricted to EPS JSE deployments)
+
+        * uses Threads internally
+
+Output Adapter declaration in a flow descriptor
+
++-------------------------------+
+
+    <!-- Solr output -->
+    <output name="solrOutput">
+        <attribute name="uri" value="solr:/" />
+        <attribute name="zkQuorum" value="127.1.1.0:1234" />
+        <attribute name="solrCollection" value="example" />
+    </output>
+
++-------------------------------+

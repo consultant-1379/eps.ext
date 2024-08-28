@@ -1,0 +1,25 @@
+	------
+	Required Dependencies
+	------
+
+Required Dependencies
+
+* Java and JEE Platform
+
+	EPS Extensions are tested against Oracle Java ${javaVersion}.x
+
+	EPS Extensions are tested against RedHat EAP ${versionJbossAs} platform (available
+        {{{${nexusRootUrl}/content/repositories/jbosseap/org/jboss/as/jboss-as-dist/}here}}).
+
+	Handler/adapter specific required dependencies will be described in the handler/adapter
+         documentation, and a zip/tar.gz distribution which includes all dependencies is also available.
+
+* Event Processing Service
+
+    EPS Extensions are developed against EPS ${versionEps}.
+    See EPS {{{${nexusRootUrl}/${epsDocs}/required_dependencies.html}required dependencies}}.
+
+* Maven dependencies
+
+	Every extension module is delivered apart and should be added independently.
+        Dependencies to be added to pom are described in related module site.

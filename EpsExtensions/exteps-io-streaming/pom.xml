@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.ericsson.component.aia.services.exteps</groupId>
+        <artifactId>EpsExtensions</artifactId>
+        <version>3.0.79-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>exteps-io-streaming</artifactId>
+    <name>EpsExt IO Streaming</name>
+    <dependencies>
+        <dependency>
+            <groupId>com.ericsson.component.aia.mediation.parser</groupId>
+            <artifactId>recordbuilder</artifactId>
+            <version>${version.parser}</version>
+        </dependency>
+        <!-- STREAMING DEPENDENCIES -->
+        <dependency>
+            <groupId>com.ericsson.component.aia.mediation.netty</groupId>
+            <artifactId>engine</artifactId>
+            <version>${version.streamterminator}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.component.aia.mediation.netty.component</groupId>
+            <artifactId>components-all</artifactId>
+            <version>${version.streamterminator}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.component.aia.mediation.netty.extension</groupId>
+            <artifactId>metric-registry</artifactId>
+            <version>${version.streamterminator}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.component.aia.itpf.common.flow</groupId>
+            <artifactId>eventflow-api</artifactId>
+            <version>${version_FlowFramework}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- STREAMING DEPENDENCIES -->
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>check-style</id>
+                        <configuration>
+                            <failsOnError>false</failsOnError>
+                            <failOnViolation>true</failOnViolation>
+                            <maxAllowedViolations>86</maxAllowedViolations>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

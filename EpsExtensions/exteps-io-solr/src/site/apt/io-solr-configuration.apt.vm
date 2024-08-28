@@ -1,0 +1,76 @@
+	------
+	IO adapter for Solr Module Configuration
+	------
+
+EpsExtensions - IO adapter for Solr - Configuration
+
+
+* Introduction
+
+		The SolrOutputAdapter should be added as output handler in the flow.xml definition, see
+                {{{./io-solr-examples.html}IO adapter for Solr Examples}}.
+
+		These parameters are attributes of the event handler element:
+
+	URI protocol <<solr:/>>
+
+* IO adapter for Solr configuration properties:
+
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+
+|| Configuration parameter name   || Description                                                  || Default value (acceptable range) |
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+
+| zkQuorum                        |The cloud client endpoint of the                               |                                   |
+|                                 |{{{https://zookeeper.apache.org/}Apache ZooKeeper}} service    | none (HOST:PORT ip address)       |
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+
+| zkConnectionTimeout             |The milliseconds timeout for connecting the ZooKeeper service  | 30000                             |
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+
+| zkClientTimeout                 |The milliseconds timeout for client ZooKeeper service          | 10000                             |
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+
+| solrCollection                  |The cloud Solr collection name, mandatory.                     |none (any string value)            |
+|                                 | if not set solrCollectionBuilder                              |                                   |
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+
+| solrCollectionBuilder           |The collection builder class name, see                         | none (the full class path of a class extending |
+|                                 |{{{./io-solr-collectionbuilder.html}here}} for details,        | {{{./apidocs/com/ericsson/oss/services/exteps/ioadapter/solr/external/SolrCollectionBuilder.html}SolrCollectionBuilder}} interface) |
+|                                 |mandatory if not set solrCollection                            |                                   |
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+
+| solrClientCommit                |The flag for forcing Solr to do an explicit commit for each    | false                             |
+|                                 |event received                                                 |                                   |
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+
+| waitFlush                       |The flag for block explicit commit until index changes are     | false                             |
+|                                 |flushed to disk, used only if solrClientCommit is true         |                                   |
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+
+| waitSearcher                    |The flag for block explicit commit until a new searcher is     | false                             |
+|                                 |opened and registered as the main query searcher,              |                                   |
+|                                 |used only if solrClientCommit is true                          |                                   |
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+
+| softCommit                      |The flag makes index changes visible immediately,              | false                             |
+|                                 |used only if solrClientCommit is true                          |                                   |
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+
+| solrOverwrite                   |The flag for checking for and overwrite duplicates in Solr     | true                              |
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+
+| exceptionHandler                |The {{{./io-solr-exceptionhandling.html}exception handlig}}    | resubmit (resubmit/rollback)      |
+|                                 | action taken in case of failure in Solr indexing              |                                   |
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+
+| resubmitTime                    |The number of resubmit attempts before discard the failing events | 1                              |
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+
+| cacheSize                       |The max number of cached events, older items are discarded     | 30000 (positive integer bigger    |
+|                                 |if the cache is full                                           | of batchSize)                     |
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+
+| batchSize                       |The number of cached events sent for indexing in a single batch | 1000 (positive integer smaller of cacheSize) |
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+
+| httpConnectionTimeout           |The milliseconds timeout for Http connection                   | 60000                             |
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+
+| httpSocketTimeout               |The milliseconds timeout for Http socket to server             | 60000                             |
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+
+| httpMaxConnections              |The total max number of simultaneous Http connections to all Solr cloud servers | 1000             |
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+
+| httpMaxConnectionsPerHost       |The max number of simultaneous Http connections to a single server | 200                           |
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+
+| retentionDay                    |The number used used by                                        | 7                                 |
+|                                 | {{{./io-solr-collectionbuilder.html}collectionbuilder interface}} |                               |
+|                                 |for generating the SOLR collection name                        |                                   |
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+
+| timeZone                        |The TimeZone used by                                           | "JST" (any valid TimeZone id)     |
+|                                 |{{{./io-solr-collectionbuilder.html}collectionbuilder interface}} |                                |
+|                                 |for generating the SOLR collection name                        |                                   |
+*---------------------------------+---------------------------------------------------------------+-----------------------------------+

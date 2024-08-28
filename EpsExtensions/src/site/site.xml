@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/DECORATION/1.3.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/DECORATION/1.3.0 http://maven.apache.org/xsd/decoration-1.3.0.xsd">
+    <bannerLeft>
+    	<name>EPS extensions</name>
+    	<href>http://www.ericsson.com/</href>
+    </bannerLeft>
+    
+    <bannerRight>
+    	<src>images/logo.png</src>
+    	<href>http://www.ericsson.com/</href>
+    </bannerRight>
+    
+    <poweredBy>
+    	<logo name="Ericsson" href="http://www.ericsson.com/" img="images/logo.png" />
+    </poweredBy>
+    
+    <body>
+    	<links>
+            <item name="CDS Portal" href="https://cds.ericsson.se/#portal"/>
+    		<item name="Report bugs" href="${jira.url}"/>
+    		<item name="Latest releases" href="${releases.url}"/>
+    		<item name="Nexus" href="${nexusUrl}"/>
+    	</links>
+    	<menu name="EpsExtensions">
+    		<item name="Home" href="/index.html"/>
+    		<item name="Required dependencies" href="/required_dependencies.html"/>
+    		<item name="How to use" href="/using-exteps.html"/>
+            <item name="Performance Statistics" href="/performance-statistics.html"/>
+    		<item name="FAQs" href="/faq.html"/>
+    		<item name="Troubleshooting" href="/troubleshooting.html"/>
+    		<item name="JavaDocs" href="/apidocs/index.html"/>
+    		<item name="Glossary" href="/glossary.html"/>
+    	</menu>
+    	
+    	<menu ref="modules" />
+    	
+    	<menu name="Guidelines">
+	      <item name="Naming Conventions" href="/naming-conventions.html"/>
+	      <item name="Extensions Creation" href="/extension-creation-guidelines.html"/>
+	    </menu>
+    	
+    </body>
+  
+	<skin>
+        <groupId>com.ericsson.nms.pres.client</groupId>
+        <artifactId>EricssonSkin</artifactId>
+        <version>1.0-RELEASE</version>
+    </skin>
+	
+</project>
+

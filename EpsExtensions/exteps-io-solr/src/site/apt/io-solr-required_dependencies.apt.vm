@@ -1,0 +1,16 @@
+	------
+	EPS Extensions - IO adapter for Solr - Dependencies
+	------
+
+EpsExtensions - IO adapter for Solr - Dependencies
+
+
+* 3PP dependencies
+
+	3PP used in IO adapter for Solr and its CAX number.
+
+*---------------------------------+-------------------------------------+-----------------------------------+
+|| 3PP                            || Description                        || CAX number                       |
+*---------------------------------+-------------------------------------+-----------------------------------+
+| {{{http://lucene.apache.org/solr/}Apache Solr ${version_apache_solr}}} | Solr is an open source enterprise search server based on the Lucene Java search library       | {{{https://bazaar.internal.ericsson.com/component.php?componentid=15232&category=}4/CAX1054545}} |
+*---------------------------------+-------------------------------------+-----------------------------------+

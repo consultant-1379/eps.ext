@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ericsson.component.aia.services.exteps</groupId>
+        <artifactId>EpsExtensions</artifactId>
+        <version>3.0.79-SNAPSHOT</version>
+    </parent>
+    <artifactId>exteps-eh-parser</artifactId>
+    <name>EpsExt Parser</name>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ericsson.component.aia.mediation.parser</groupId>
+            <artifactId>core</artifactId>
+            <version>${version.parser}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ericsson.component.aia.model</groupId>
+            <artifactId>base</artifactId>
+            <version>${version.model}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${version_apache_commons_lang3}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.component.aia.services.exteps</groupId>
+            <artifactId>exteps-io-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>check-style</id>
+                        <configuration>
+                            <failsOnError>false</failsOnError>
+                            <failOnViolation>true</failOnViolation>
+                            <maxAllowedViolations>13</maxAllowedViolations>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

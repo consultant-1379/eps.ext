@@ -1,0 +1,17 @@
+	------
+	EH Parser Module Dependencies
+	------
+
+EpsExtensions - EH Parser - Dependencies
+
+
+*---------------------------------+-------------------------------------+
+|| Dependecy				 	  || Description                        |
+*---------------------------------+-------------------------------------+
+| {{{https://cds.ericsson.se/#portal/mediation/event-parser/}Mediation Layer Event Parser ${version.parser}}} | Mediation Layer Event Parser   |
+*---------------------------------+-------------------------------------+
+
+* 3PP dependencies
+
+	None.
+

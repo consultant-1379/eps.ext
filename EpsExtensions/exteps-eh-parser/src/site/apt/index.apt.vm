@@ -1,0 +1,45 @@
+	------
+	EPS Extensions - Pm Record Stream Parser Input Handler
+	------
+
+PmRecordStreamParser Event Handler
+
+	The PmRecordStream Event Handler allows an EPS flow to parse streamed network PM event records.
+~~ put in reference to parsers docs when available
+
+	Event Parser provides capability to decode binary encoded file or encoded stream from the network element. Parsers use event definition xml (also known as 10/ XML) which describe the structure of encoded event.
+
+    Parsing is performed by Parsers version ${version.parser}, the input must be a valid StreamedRecord.
+    Invalid or null input events are discarded.
+
+    There are three types of StreamedRecord:
+
+    * CONNECT record
+
+    contains information required to parse subsequent <<EVENT>> records (fileFormatVersion and
+    fileInformationVersion).
+
+    If the <<CONNECT>> record cannot be parsed then subsequent <<EVENT>> records from the Network
+    Element will be discarded - until a valid <<CONNECT>> record is received.
+
+    * EVENT record
+
+     contains the PM event data of interest.  This will be ignored unless a valid <<CONNECT>> record
+     is received from the Network Element.
+
+    * DISCONNECT record
+
+    indicates that the Network Element will stop streaming event.
+
+    A <<CONNECT>> record must be received to resume processing events from the Network Element.
+
+~~ put in reference to SchemaEnum in parsers api when available
+
+Event Handler class name
+
++-------------------------------+
+
+    com.ericsson.component.aia.services.exteps.eh.parser.PmRecordStreamParser
+
++-------------------------------+
+

@@ -1,0 +1,15 @@
+	------
+	EPS Extensions - Naming Conventions
+	------
+
+EPS Extensions naming conventions
+
+	The name of handler must not contain dot character.
+
+	Event handles name should not clash with already existing ones, a list of EPS built-in handlers
+        is {{{https://arm101-eiffel004.lmera.ericsson.se:8443/nexus/content/sites/cds/EventProcessingService/latest/ext-builtin-components.html}here}}.
+
+	If you need to provide customized configuration attributes for your own Event Handlers,
+        it is recommended to use camelCase when giving attribute names (e.g. maxBatchSize).
+        However, it is allowed to used dots inside the attribute names if you really have to,
+        but not recommended.

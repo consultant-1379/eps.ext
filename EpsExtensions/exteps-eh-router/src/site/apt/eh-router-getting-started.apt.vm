@@ -1,0 +1,36 @@
+	------
+	EH Router Getting Started
+	------
+
+EpsExtensions - EH Router - Getting Started
+
+
+* Dependencies
+
+    <<Step 1:>> Add dependency to application distribution package POM file
+
++-----+
+    <dependency>
+        <groupId>com.ericsson.component.aia.services</groupId>
+        <artifactId>exteps-eh-router</artifactId>
+        <version>${project.version}</version>
+        <type>tar.gz</type>
+    </dependency>
++-----+
+
+	[]
+
+* Choose the routing Event Handler
+
+    <<Step 2:>> Choose one of the routing Event Handlers:
+
+    * StrategyBasedEventRouter
+
+    * StreamedRecordRouter
+
+
+* Using the Router Module
+
+    <<Step 3:>> Add and configure the routing Event Handler in a flow.
+
+    See {{{./eh-router-examples.html} routing flow examples}}.

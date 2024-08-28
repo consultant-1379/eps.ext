@@ -1,0 +1,20 @@
+	------
+	EPS Extensions - Apache Kafka IO adapters
+	------
+
+EpsExtensions - Apache Kafka IO adapters
+
+	IO adapters used to access Apache Kafka.
+
+
+* IO adapter URI
+
++-------------------------------+
+
+    kafka://
+
++-------------------------------+
+
+
+	Input adapter will recieve data in form of byte[] and send it downstream to the next component in the flow. Appropriate deserialization
+	must be done by one of handlers in the flow.

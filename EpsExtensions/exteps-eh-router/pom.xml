@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>EpsExtensions</artifactId>
+        <groupId>com.ericsson.component.aia.services.exteps</groupId>
+        <version>3.0.79-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>exteps-eh-router</artifactId>
+    <name>EpsExt Router</name>
+
+    <properties>
+        <mvelUrl>http://mvel.codehaus.org</mvelUrl>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ericsson.component.aia.mediation.parser</groupId>
+            <artifactId>core</artifactId>
+            <version>${version.parser}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ericsson.component.aia.model</groupId>
+            <artifactId>base</artifactId>
+            <version>${version.model}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mvel</groupId>
+            <artifactId>mvel2</artifactId>
+            <version>2.2.4.Final</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>check-style</id>
+                        <configuration>
+                            <failsOnError>false</failsOnError>
+                            <failOnViolation>true</failOnViolation>
+                            <maxAllowedViolations>13</maxAllowedViolations>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
